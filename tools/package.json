@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "preact-cli": "^2.2.1"
+  }
+}
