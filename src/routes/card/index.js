@@ -15,7 +15,7 @@ const CardRoute = ({code}) => {
 
     return (
         <div>
-            <h1>Card</h1>
+            <h1>Player Card</h1>
             {cards.map(card => <Card card={card} showCardLink={true} />)}
             {/* <a href={"/card"}>New card</a> */}
             <a href={"/"}>Home</a>

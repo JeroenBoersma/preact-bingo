@@ -8,9 +8,9 @@ const Updater = ({memory}) => {
 
     return (
         <Fragment>
+            <Stats stats={memory.stats()} />
             <h1 onClick={updateNumber}>Current {number}</h1>
             <button onClick={updateNumber}>Next</button>
-            <Stats stats={memory.stats()} />
             <History history={memory.history} />
         </Fragment>
     )
@@ -18,12 +18,9 @@ const Updater = ({memory}) => {
 
 const Stats = ({stats}) => (
     <Fragment>
-        <h2>Stats</h2>
-        <div>
-            Remaining: {stats.remaining} ({stats.todo}%)<br />
-            Done: {stats.progress} ({stats.done}%)
+        <div class="bar bar-sm">
+            <div class="bar-item" role="progressbar" style={`width: ${stats.done}%;`} aria-valuenow={stats.done} aria-valuemin="0" aria-valuemax="100" />
         </div>
-
     </Fragment>
 )
 

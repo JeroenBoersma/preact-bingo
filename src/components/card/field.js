@@ -14,7 +14,7 @@ const Field = (props) => {
     }, [props.number, props.checked, props.number.isCalled]);
 
     return (
-        <div onClick={changeChecked} className={`card-field ${checked ? '--checked' : ''}`}>
+        <div onClick={changeChecked} className={`bingo-card-field ${checked ? 'bg-success' : ''}`}>
             {props.number.number}
         </div>
     );

@@ -5,6 +5,14 @@ body {
     display: flex;
 }
 
-.card-field.--checked {
-    background-color: green;
+.bingo-card-field {
+    border: 1px solid;
+    font-size: 1.1em;
+    padding: .7em;
+    text-align: center;
+    cursor: pointer;
+}
+
+.bingo-card-field:empty {
+    border: none;
 }

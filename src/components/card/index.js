@@ -6,7 +6,7 @@ const Card = (props) => {
 
     return (
         <div>
-            <table>
+            <table class={"bingo-card"}>
                 <thead>
                     <tr>
                         <th>B</th>
