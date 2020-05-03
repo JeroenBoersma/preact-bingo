@@ -1,34 +1,46 @@
-import {h} from 'preact';
+import {h, Fragment} from 'preact';
 import { useState } from 'preact/hooks';
 
-const Updater = (props) => {
-    const memory = props.memory;
+const Updater = ({memory}) => {
 
     const [number, setNumber] = useState();
     const updateNumber = () => setNumber(memory.next());
 
     return (
-        <div>
-            <h1 onClick={updateNumber}>Current {number} ({memory.done()}%)</h1>
+        <Fragment>
+            <h1 onClick={updateNumber}>Current {number}</h1>
             <button onClick={updateNumber}>Next</button>
-            <History memory={memory} />
-        </div>
+            <Stats stats={memory.stats()} />
+            <History history={memory.history} />
+        </Fragment>
     )
 };
 
-const History = (props) => (
-    <div>
+const Stats = ({stats}) => (
+    <Fragment>
+        <h2>Stats</h2>
+        <div>
+            Remaining: {stats.remaining} ({stats.todo}%)<br />
+            Done: {stats.progress} ({stats.done}%)
+        </div>
+
+    </Fragment>
+)
+
+
+const History = ({history}) => (
+    <Fragment>
         <h2>History</h2>
         <ol>
-            {props.memory.history.map(record => <li>{record}</li>)}
+            {history.map(record => <li>{record}</li>)}
         </ol>
-    </div>
+    </Fragment>
 );
 
 
-const UpNext = (props) => {
+const UpNext = ({card}) => {
 
-    const memory = props.card.game();
+    const memory = card.game();
 
     return (
         <div>
