@@ -1,0 +1,10 @@
+
+@import '../../node_modules/spectre.css/dist/spectre.min.css';
+
+body {
+    display: flex;
+}
+
+.card-field.--checked {
+    background-color: green;
+}
