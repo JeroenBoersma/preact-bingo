@@ -9,7 +9,7 @@ const Updater = ({memory}) => {
     return (
         <Fragment>
             <Stats stats={memory.stats()} />
-            <h1 onClick={updateNumber}>Current {number}</h1>
+            <h1>Called <strong>{number}</strong></h1>
             <button onClick={updateNumber}>Next</button>
             <History history={memory.history} />
         </Fragment>
@@ -27,8 +27,8 @@ const Stats = ({stats}) => (
 
 const History = ({history}) => (
     <Fragment>
-        <h2>History</h2>
-        <ol>
+        <h2>Latest</h2>
+        <ol class="history">
             {history.map(record => <li>{record}</li>)}
         </ol>
     </Fragment>
@@ -40,7 +40,7 @@ const UpNext = ({card}) => {
     const memory = card.game();
 
     return (
-        <div>
+        <div class="game-stats">
             <Updater memory={memory} />
         </div>
     );

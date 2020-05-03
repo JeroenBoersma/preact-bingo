@@ -8,9 +8,9 @@ const OrganiserRoute = ({balls}) => {
     const cards = [UniqueGenerator.organiser()];
 
     return (
-        <div>
+        <div class="organiser-board">
             <h1>Organiser Card</h1>
-            {cards.map(card => <div><Card card={card} />{balls ? <UpNext card={card} /> : '' }</div>)}
+            {cards.map(card => <div class="flex"><Card card={card} />{balls ? <UpNext card={card} /> : '' }</div>)}
             {/* <a href={"/organiser"}>New Round</a> */}
             <a href={"/"}>Home</a>
         </div>

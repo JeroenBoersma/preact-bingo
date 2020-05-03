@@ -16,3 +16,5 @@ body {
 .bingo-card-field:empty {
     border: none;
 }
+
+.flex {display: flex;}
