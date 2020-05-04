@@ -1,4 +1,4 @@
-const Scores = ({players, removePlayer, loadCard}) => (
+const Scores = ({players, removePlayer, openRegistration}) => (
     <table>
         <thead>
             <tr>
@@ -10,10 +10,10 @@ const Scores = ({players, removePlayer, loadCard}) => (
         </thead>
         <tbody>
             {players.map(player => <tr>
-                <td onClick={() => loadCard(player)}>
+                <td onClick={() => openRegistration(player)}>
                     {player.name}
                 </td>
-                <td>0</td>
+                <td>{player.score}</td>
                 <td>
                     <a href={`/card/${player.cardId}`} class="card-id">{player.cardId}</a>
                 </td>

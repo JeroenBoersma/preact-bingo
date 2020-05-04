@@ -3,24 +3,46 @@ import Card from "../card";
 import Scores from "./scores";
 import NewPlayer from "./newPlayer";
 
+const RegisterWin = ({card, organiserCard, closeRegistration, registerScore}) => {
+
+    // Update containing fields
+    organiserCard.contains(card).map(i => card.field(i).called());
+
+    return (
+        <div>
+            <button onClick={registerScore}>BINGO!</button>
+            <button onClick={closeRegistration}>Close</button>
+        </div>
+    );
+}
+
 const ScoreCard = ({card: organiserCard}) => {
 
-    const [players, setScores] = useState([]);
-    const [activeCard, setActiveCard] = useState(null);
+    const [players, setPlayers] = useState([]);
+    const [activePlayer, setActivePlayer] = useState(null);
 
-    const addPlayer = ({name, card}) => setScores((currentPlayers) => [...currentPlayers, {name, card, cardId: card.toString()}]);
+    const addPlayer = ({name, card}) => setPlayers((currentPlayers) => [...currentPlayers, {name, score: 0, card, cardId: card.toString()}]);
     const removePlayer = (playerToDelete) => {
-        setScores((currentPlayers) => currentPlayers.filter((player) => player !== playerToDelete));
+        setPlayers((currentPlayers) => currentPlayers.filter((player) => player !== playerToDelete));
     }
 
-    const loadCard = (player) => setActiveCard(player.card);
+    const openRegistration = (player) => setActivePlayer(player);
+    const closeRegistration = () => {setActivePlayer(null)};
+
+    const registerScore = () => {
+        activePlayer.score++;
+
+        setPlayers(players.sort((a, b) => a.score - b.score).reverse());
+
+        closeRegistration();
+    };
 
     return (
         <div>
             <h1>Scorecard</h1>
-            <Scores players={players} removePlayer={removePlayer} loadCard={loadCard} />
+            <Scores players={players} removePlayer={removePlayer} openRegistration={openRegistration} />
             <NewPlayer addPlayer={addPlayer} />
-            {activeCard ? <Card card={activeCard} /> : ''}
+            {activePlayer ? [<Card card={activePlayer.card} />, <RegisterWin card={activePlayer.card} organiserCard={organiserCard} closeRegistration={closeRegistration} registerScore={registerScore} />] : ''}
         </div>
     );
 }
