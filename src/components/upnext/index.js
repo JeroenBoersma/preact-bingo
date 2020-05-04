@@ -20,6 +20,7 @@ class AutoUpdater extends Component {
 
         if (this.timerState) {
             clearTimeout(this.timerState);
+            this.timerState = null;
             this.setTimeleft(this.maxTime);
             return;
         }
