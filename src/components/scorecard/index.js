@@ -1,59 +1,7 @@
-import { useState, useRef } from "preact/hooks";
-import UniqueGenerator from "../../lib/board";
+import { useState } from "preact/hooks";
 import Card from "../card";
-
-const Scores = ({players, removePlayer, loadCard}) => (
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Score</th>
-                <th title="Card ID">#</th>
-                <th />
-            </tr>
-        </thead>
-        <tbody>
-            {players.map(player => <tr>
-                <td onClick={() => loadCard(player)}>
-                    {player.name}
-                </td>
-                <td>0</td>
-                <td>
-                    <a href={`/card/${player.cardId}`} class="card-id">{player.cardId}</a>
-                </td>
-                <td onCLick={() => removePlayer(player)}>X</td>
-            </tr>)}
-        </tbody>
-    </table>
-)
-
-const NewPlayer = ({addPlayer}) => {
-
-    const [name, setName] = useState("");
-    const inputRef = useRef();
-
-    const submit = (e) => {
-        e.preventDefault();
-
-        if ("" === name) {
-            return;
-        }
-
-        addPlayer({name, card: UniqueGenerator.randomize()})
-        setName("");
-
-        inputRef.current.focus();
-    }
-
-    return (
-        <div>
-            <form onSubmit={submit}>
-                <input ref={inputRef} value={name} onInput={(f) => setName(f.target.value)} placeholder="Name" />
-                <button type="submit">Add</button>
-            </form>
-        </div>
-    );
-}
+import Scores from "./scores";
+import NewPlayer from "./newPlayer";
 
 const ScoreCard = ({card: organiserCard}) => {
 
