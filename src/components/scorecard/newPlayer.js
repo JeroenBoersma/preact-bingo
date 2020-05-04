@@ -1,9 +1,10 @@
 import { useState, useRef } from "preact/hooks";
 import UniqueGenerator from "../../lib/board";
+import { generate } from 'project-name-generator';
 
 const NewPlayer = ({addPlayer}) => {
 
-    const [name, setName] = useState("");
+    const [name, setName] = useState(generate().spaced);
     const inputRef = useRef();
 
     const submit = (e) => {
@@ -14,7 +15,7 @@ const NewPlayer = ({addPlayer}) => {
         }
 
         addPlayer({name, card: UniqueGenerator.randomize()})
-        setName("");
+        setName(generate().spaced);
 
         inputRef.current.focus();
     }
@@ -22,7 +23,7 @@ const NewPlayer = ({addPlayer}) => {
     return (
         <div>
             <form onSubmit={submit}>
-                <input ref={inputRef} value={name} onInput={(f) => setName(f.target.value)} placeholder="Name" />
+                <input ref={inputRef} value={name} onFocus={(e) => e.target.select()} onInput={(f) => setName(f.target.value)} placeholder="Name" />
                 <button type="submit">Add</button>
             </form>
         </div>
