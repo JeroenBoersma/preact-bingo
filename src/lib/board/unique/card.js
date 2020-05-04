@@ -21,7 +21,10 @@ export default class UniqueCard {
         return new Array(this.data[0].length)
         .fill(new Array(this.data.length).fill(0))
         .map((row, rowIndex) => row.map((field, columnIndex) =>
-            -1 === this.data[columnIndex][rowIndex] ? new EmptyField(this.generator.emptyField) : new Field(this.generator.numbers[this.data[columnIndex][rowIndex] + columnIndex * this.generator.maxPerRow], this.data[columnIndex][rowIndex] + columnIndex * this.generator.maxPerRow)
+            -1 === this.data[columnIndex][rowIndex] ? new EmptyField(this.generator.emptyField) : new Field(
+                this.generator.numbers[this.data[columnIndex][rowIndex] + columnIndex * this.generator.maxPerRow],
+                this.data[columnIndex][rowIndex] + columnIndex * this.generator.maxPerRow
+            )
         ))
     }
 

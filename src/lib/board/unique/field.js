@@ -11,8 +11,8 @@ export default class Field {
         this.index = index;
     }
 
-    called = () => {
-        this.#called = true;
+    called = (state = true) => {
+        this.#called = !!state;
     }
     get isCalled() {
         return this.#called;
