@@ -11,14 +11,5 @@ export default class OrganizerCard extends UniqueCard {
         this.#game = new Game(this);
     }
 
-    pretify() {
-
-        const pretty = super.pretify();
-
-        this.#game.linkPretty(pretty);
-
-        return pretty;
-    }
-
     game = () => this.#game;
 }

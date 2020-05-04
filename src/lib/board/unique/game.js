@@ -6,8 +6,6 @@ class Game {
     generator;
 
     #game = [];
-    #fields = [];
-    #fieldsIndex = [];
 
     history = [];
     progress = 0;
@@ -39,22 +37,8 @@ class Game {
         this.total = this.#game.length;
     }
 
-    linkPretty(pretty) {
-
-        this.#fields = [];
-        this.#fieldsIndex = [];
-
-        pretty.map(rows => rows.map(field => this.#fields.push(field)));
-        this.#fieldsIndex = this.#fields.map(field => +field.index);
-    }
-
     updatePretty(index) {
-        const fieldIndex = this.#fieldsIndex.indexOf(+index);
-        if (fieldIndex < 0) {
-            return;
-        }
-
-        this.#fields[fieldIndex].called();
+        this.card.field(index).called();
     }
 
     next() {

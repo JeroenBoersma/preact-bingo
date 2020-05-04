@@ -1,14 +1,18 @@
 
 export default class Field {
 
-    number;
+    visual;
     index;
+
+    relativeIndex;
 
     #called = false;
 
-    constructor(number, index = -1) {
-        this.number = number;
+    constructor(visual, index = -1, relativeIndex = -1) {
+        this.visual = visual;
         this.index = index;
+
+        this.relativeIndex = relativeIndex;
     }
 
     called = (state = true) => {
