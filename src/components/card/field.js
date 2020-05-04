@@ -1,21 +1,21 @@
 import {h} from 'preact';
 import {useState, useEffect} from 'preact/hooks';
 
-const Field = (props) => {
+const Field = ({number}) => {
 
-    const [checked, setChecked] = useState(!!props.checked || props.number.isCalled);
-    const changeChecked = () => setChecked(!checked || props.number.isCalled);
+    const [checked, setChecked] = useState(number.isCalled);
+    const changeChecked = () => number.called(!number.isCalled);
 
     // Overwite function to monitor behavior
-    props.number.called = ((origCalled) => () => {origCalled(); setChecked(true);})(props.number.called)
+    number.called = ((origCalled) => (called) => {origCalled(called); setChecked(number.isCalled);})(number.called)
 
     useEffect(() => {
-        setChecked(props.number.isCalled);
-    }, [props.number, props.checked, props.number.isCalled]);
+        setChecked(number.isCalled);
+    }, [number]);
 
     return (
         <div onClick={changeChecked} className={`bingo-card-field ${checked ? 'bg-success' : ''}`}>
-            {props.number.number}
+            {number.number}
         </div>
     );
 }
