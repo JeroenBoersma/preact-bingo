@@ -2,19 +2,7 @@ import { useState } from "preact/hooks";
 import Card from "../card";
 import Scores from "./scores";
 import NewPlayer from "./newPlayer";
-
-const RegisterWin = ({card, organiserCard, closeRegistration, registerScore}) => {
-
-    // Update containing fields
-    organiserCard.contains(card).map(i => card.field(i).called());
-
-    return (
-        <div>
-            <button onClick={registerScore}>BINGO!</button>
-            <button onClick={closeRegistration}>Close</button>
-        </div>
-    );
-}
+import RegisterWin from './registerWin';
 
 const ScoreCard = ({card: organiserCard}) => {
 
