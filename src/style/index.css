@@ -18,3 +18,10 @@ body {
 }
 
 .flex {display: flex;}
+
+.card-id {
+	text-overflow: ellipsis;
+	width: 100px;
+	overflow: hidden;
+	display: inline-block;
+}
