@@ -11,6 +11,8 @@ class Game {
     progress = 0;
     total = 0;
 
+    subscribers = {};
+
     /**
      *
      * @param {Card} card
@@ -41,6 +43,25 @@ class Game {
         this.card.field(index).called();
     }
 
+    trigger(eventName, value) {
+        if (undefined === this.subscribers[eventName]) {
+            return;
+        }
+        this.subscribers[eventName].reduce((value, fn) => fn(value), value);
+    }
+
+    subscribe(eventName, callback) {
+        this.subscribers[eventName] = this.subscribers[eventName] || [];
+        this.subscribers[eventName].push(callback);
+    }
+
+    unsubscribe(eventName, callback) {
+        if (undefined === this.subscribers[eventName]) {
+            return;
+        }
+        this.subscribers[eventName] = this.subscribers[eventName].filter(fn => fn !== callback);
+    }
+
     next() {
 
         if (this.progress >= this.total) {
@@ -53,6 +74,8 @@ class Game {
         this.progress++;
 
         this.updatePretty(n);
+
+        this.trigger('next', n);
 
         return this.generator.numbers[n];
     }

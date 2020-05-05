@@ -58,6 +58,10 @@ export default class UniqueCard {
         return otherCard.fields.map(f => f.index).filter(f => indexA.indexOf(f) > -1);
     }
 
+    done(otherCard) {
+        return this.contains(otherCard).length / otherCard.fields.length;
+    }
+
     field(index) {
         const fieldIndex = this.#fieldsIndex.indexOf(+index);
         if (fieldIndex < 0) {
