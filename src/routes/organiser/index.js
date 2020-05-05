@@ -6,12 +6,16 @@ import ScoreCard from '../../components/scorecard';
 
 const OrganiserRoute = ({balls}) => {
 
-    const cards = [UniqueGenerator.organiser()];
+    const card = UniqueGenerator.organiser();
 
     return (
         <div class="organiser-board">
             <h1>Organiser Card</h1>
-            {cards.map(card => <div class="flex"><Card card={card} />{balls ? [<UpNext card={card} />] : '' }<ScoreCard card={card} /></div>)}
+            <div class="flex">
+                <Card card={card} />
+                {balls ? [<UpNext card={card} />] : '' }
+                <ScoreCard card={card} />
+            </div>
             {/* <a href={"/organiser"}>New Round</a> */}
             <a href={"/"}>Home</a>
         </div>
