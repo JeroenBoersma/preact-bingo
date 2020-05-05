@@ -1,9 +1,10 @@
-const Scores = ({players, removePlayer, openRegistration}) => (
+const Scores = ({players, removePlayer, openRegistration, organiserCard}) => (
     <table>
         <thead>
             <tr>
                 <th>Name</th>
                 <th>Score</th>
+                <th>Full %</th>
                 <th title="Card ID">#</th>
                 <th />
             </tr>
@@ -14,6 +15,7 @@ const Scores = ({players, removePlayer, openRegistration}) => (
                     {player.name}
                 </td>
                 <td>{player.score}</td>
+                <td>{Math.round(organiserCard.done(player.card) * 1000) / 10}</td>
                 <td>
                     <a href={`/card/${player.cardId}`} class="card-id">{player.cardId}</a>
                 </td>
