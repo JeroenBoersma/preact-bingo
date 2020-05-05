@@ -6,7 +6,7 @@ const Field = ({number}) => {
     const changeChecked = () => number.called(!number.isCalled);
 
     // Overwite function to monitor behavior
-    number.called = ((origCalled) => (called) => {origCalled(called); setChecked(number.isCalled);})(number.called);
+    number.called = (origCalled => called => {origCalled(called); setChecked(number.isCalled);})(number.called);
 
     useEffect(() => {
         setChecked(number.isCalled);
