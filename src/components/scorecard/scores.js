@@ -4,7 +4,7 @@ const Scores = ({players, removePlayer, openRegistration, organiserCard}) => (
             <tr>
                 <th>Name</th>
                 <th>Score</th>
-                <th>Full %</th>
+                <th>%</th>
                 <th title="Card ID">#</th>
                 <th />
             </tr>

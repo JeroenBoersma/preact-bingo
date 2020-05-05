@@ -53,13 +53,22 @@ export default class UniqueCard {
         ));
     }
 
+    matching(otherCard) {
+        const indexA = this.#fields.filter(f => f.isCalled).map(f => f.index);
+        return [
+            indexA,
+            otherCard.fields.map(f => f.index).filter(f => indexA.indexOf(f) > -1)
+        ];
+    }
+
     contains(otherCard) {
-        let indexA = this.#fields.filter(f => f.isCalled).map(f => f.index);
-        return otherCard.fields.map(f => f.index).filter(f => indexA.indexOf(f) > -1);
+        let [, indexB] = this.matching(otherCard);;
+        return indexB;
     }
 
     done(otherCard) {
-        return this.contains(otherCard).length / otherCard.fields.length;
+        let [indexA, indexB] = this.matching(otherCard);;
+        return indexB.length / indexA.length;
     }
 
     field(index) {
