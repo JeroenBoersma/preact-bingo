@@ -1,5 +1,5 @@
 import {h, Fragment, Component} from 'preact';
-import { useState, useEffect } from 'preact/hooks';
+import { useState } from 'preact/hooks';
 
 
 class AutoUpdater extends Component {
