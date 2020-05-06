@@ -1,7 +1,7 @@
 import { Fragment } from 'preact';
 import { useState } from 'preact/hooks';
 import History from './history';
-import { AutoUpdater } from './autoUpdater';
+import AutoUpdater from './autoUpdater';
 import { Stats } from "./stats";
 
 export const Updater = ({ memory }) => {
