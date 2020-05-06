@@ -62,16 +62,12 @@ export default class UniqueCard {
     }
 
     contains(otherCard) {
-        let [, indexB] = this.matching(otherCard);;
+        const [, indexB] = this.matching(otherCard);
         return indexB;
     }
 
     done(otherCard) {
-        let [indexA, indexB] = this.matching(otherCard);
-        if (indexA < 1) {
-            return 0;
-        }
-        return indexB.length / indexA.length;
+        return this.contains(otherCard).length / otherCard.fields.length;
     }
 
     field(index) {
