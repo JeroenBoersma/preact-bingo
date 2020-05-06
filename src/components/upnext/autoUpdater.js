@@ -1,21 +1,21 @@
-import { useState } from 'preact/hooks';
+import { useState, useEffect } from 'preact/hooks';
 
 const AutoUpdater = ({ callback }) => {
 
     const maxTime = 4, timeout = 1000;
     const [timeleft, setTimeleft] = useState(maxTime);
-
-    let timerState;
+    const [timerState, setTimerState] = useState(null);
 
     const toggleTimer = () => {
         if (timerState) {
             clearTimeout(timerState);
+            setTimerState(null);
 
-            timerState = null;
             return;
         }
 
-        timerState = setInterval(() => updateTimeleft(), timeout);
+        setTimeleft(maxTime);
+        setTimerState(setInterval(() => updateTimeleft(), timeout));
     }
 
     const updateTimeleft = () => {
@@ -30,7 +30,6 @@ const AutoUpdater = ({ callback }) => {
         });
         return;
     }
-
 
     return (<button onClick={toggleTimer}>Auto {timeleft}</button>);
 }
