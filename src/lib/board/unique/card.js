@@ -67,7 +67,10 @@ export default class UniqueCard {
     }
 
     done(otherCard) {
-        let [indexA, indexB] = this.matching(otherCard);;
+        let [indexA, indexB] = this.matching(otherCard);
+        if (indexA < 1) {
+            return 0;
+        }
         return indexB.length / indexA.length;
     }
 
