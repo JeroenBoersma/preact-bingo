@@ -18,14 +18,14 @@ const ScoreCard = ({card: organiserCard}) => {
     const closeRegistration = () => {setActivePlayer(null)};
 
     const sortPlayers = () => {
-        setPlayers(players.slice(0).sort((a, b) => {
-            const score = a.score - b.score;
+        setPlayers(players => players.slice(0).sort((a, b) => {
+            const score = b.score - a.score;
             if (score !== 0) {
                 return score;
             }
 
-            return organiserCard.done(a.card) - organiserCard.done(b.card);
-        }).reverse());
+            return organiserCard.done(b.card) - organiserCard.done(a.card);
+        }));
     }
 
     useEffect(() => {
