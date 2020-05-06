@@ -18,7 +18,7 @@ const ScoreCard = ({card: organiserCard}) => {
     const closeRegistration = () => {setActivePlayer(null)};
 
     const sortPlayers = () => {
-        setPlayers(players.sort((a, b) => {
+        setPlayers(players.slice(0).sort((a, b) => {
             const score = a.score - b.score;
             if (score !== 0) {
                 return score;
@@ -29,7 +29,7 @@ const ScoreCard = ({card: organiserCard}) => {
     }
 
     useEffect(() => {
-        const callback = () => {sortPlayers()}
+        const callback = () => sortPlayers()
 
         organiserCard.game().subscribe('next', callback);
         return () => {
@@ -37,9 +37,8 @@ const ScoreCard = ({card: organiserCard}) => {
         }
     });
 
-
-    const registerScore = () => {
-        activePlayer.score++;
+    const registerScore = (score) => {
+        activePlayer.score+=score;
 
         sortPlayers();
         closeRegistration();

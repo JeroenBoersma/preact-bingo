@@ -6,7 +6,8 @@ const RegisterWin = ({card, organiserCard, closeRegistration, registerScore}) =>
 
     return (
         <div>
-            <button onClick={registerScore}>BINGO!</button>
+            <button onClick={() => registerScore(1)}>BINGO!</button>
+            <button onClick={() => registerScore(-1)}>False BINGO!</button>
             <button onClick={closeRegistration}>Close</button>
         </div>
     );
