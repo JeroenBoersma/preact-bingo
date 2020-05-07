@@ -43,11 +43,11 @@ class Game {
         this.card.field(index).called();
     }
 
-    trigger(eventName, value) {
+    trigger(eventName, ...value) {
         if (undefined === this.subscribers[eventName]) {
             return;
         }
-        this.subscribers[eventName].reduce((value, fn) => fn(value), value);
+        this.subscribers[eventName].reduce((value, fn) => fn(...value), value);
     }
 
     subscribe(eventName, callback) {
@@ -78,6 +78,19 @@ class Game {
         this.trigger('next', n);
 
         return this.generator.numbers[n];
+    }
+
+    reset() {
+        this.#game = [];
+        this.history = [];
+
+        this.progress = 0;
+
+        this.#generate();
+
+        this.card.fields.map(f => f.called(false));
+
+        this.trigger("reset", null);
     }
 
     stats = () => new Stats(this);
