@@ -6,7 +6,7 @@ const NewPlayer = ({addPlayer}) => {
 
     const [name, setName] = useState(generate().spaced);
     const [randomCard, setRandomCard] = useState(UniqueGenerator.randomize());
-    const [focussed, setFocussed] = useState(false);
+    const [focussed, setFocussed] = useState(0);
 
     const inputRef = useRef();
 
@@ -19,24 +19,25 @@ const NewPlayer = ({addPlayer}) => {
 
         addPlayer({name, card: randomCard});
 
-        setFocussed(() => true);
+        setFocussed(() => 2);
         setName(() => generate().spaced);
         setRandomCard(() => UniqueGenerator.randomize());
     }
 
     const hasFocus = (focussed) => {
-        setFocussed(() => focussed);
+        setFocussed(() => 1);
         focussed && inputRef.current.select();
     };
 
     useEffect(() => {
-        if (! focussed) {
+        if (2 !== focussed) {
             return;
         }
+        setFocussed(() => 1);
 
         inputRef.current.focus();
         inputRef.current.select();
-    }, [name]);
+    }, [focussed, name]);
 
     return (
         <div>
