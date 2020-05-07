@@ -87,6 +87,10 @@ export default class UniqueCard {
         return this.#fieldsIndex;
     }
 
+    reset() {
+        this.fields.map(f => f.called(false));
+    }
+
     pretify() {
         this.init();
         return this.#pretty;

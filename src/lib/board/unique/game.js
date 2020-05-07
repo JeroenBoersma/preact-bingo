@@ -88,7 +88,7 @@ class Game {
 
         this.#generate();
 
-        this.card.fields.map(f => f.called(false));
+        this.card.reset();
 
         this.trigger("reset", null);
     }
