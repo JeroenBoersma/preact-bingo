@@ -28,12 +28,22 @@ const ScoreCard = ({card: organiserCard}) => {
         }));
     }
 
+    const resetGames = () => {
+        closeRegistration();
+
+        players.map(p => p.card.reset());
+        sortPlayers();
+    }
+
     useEffect(() => {
-        const callback = () => sortPlayers()
+        const callback = () => sortPlayers();
+        const callback2 = () => resetGames();
 
         organiserCard.game().subscribe('next', callback);
+        organiserCard.game().subscribe('reset', callback2);
         return () => {
             organiserCard.game().unsubscribe('next', callback);
+            organiserCard.game().unsubscribe('reset', callback2);
         }
     });
 
