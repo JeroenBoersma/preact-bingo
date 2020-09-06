@@ -14,18 +14,11 @@ const ScoreCard = ({card: organiserCard}) => {
         setPlayers((currentPlayers) => currentPlayers.filter((player) => player !== playerToDelete));
     }
 
-    const openRegistration = (player) => setActivePlayer(player);
+    const openRegistration = player => setActivePlayer(player);
     const closeRegistration = () => {setActivePlayer(null)};
 
     const sortPlayers = () => {
-        setPlayers(players => players.slice(0).sort((a, b) => {
-            const score = b.score - a.score;
-            if (score !== 0) {
-                return score;
-            }
-
-            return organiserCard.done(b.card) - organiserCard.done(a.card);
-        }));
+        setPlayers(players => players.slice(0).sort((a, b) => b.score - a.score));
     }
 
     const resetGames = () => {
