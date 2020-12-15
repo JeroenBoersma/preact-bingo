@@ -18,6 +18,9 @@
 button {
     @apply bg-gray-100 m-1 p-2 shadow-md;
 }
+input {
+    @apply shadow rounded border-0 p-2;
+}
 ol {
     @apply list-decimal px-10;
 }
