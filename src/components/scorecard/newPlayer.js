@@ -50,7 +50,7 @@ const NewPlayer = ({addPlayer}) => {
                 <br />
                 <label>
                     Card ID *
-                    <input value={randomCard} onFocus={(e) => e.target.select()} onInput={(f) => setRandomCard(f.target.value)} placeholder="Card ID" />
+                    <input value={randomCard} onFocus={(e) => e.target.select()} onInput={(f) => setRandomCard(UniqueGenerator.initializeCard(f.target.value))} placeholder="Card ID" />
                 </label>
             </form>
         </div>
