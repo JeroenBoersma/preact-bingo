@@ -1,27 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@import '../../node_modules/spectre.css/dist/spectre.min.css';
+@layer base {
 
-body {
-    display: flex;
+    body {
+        @apply text-xl;
+    }
+
+    h1 {
+        @apply text-2xl;
+    }
+    a {
+        @apply underline;
+    }
 }
-
-.bingo-card-field {
-    border: 1px solid;
-    font-size: 1.4em;
-    padding: 1em;
-    text-align: center;
-    cursor: pointer;
+button {
+    @apply bg-gray-100 m-1 p-2 shadow-md;
 }
-
-.bingo-card-field:empty {
-    border: none;
+ol {
+    @apply list-decimal px-10;
 }
-
-.flex {display: flex;}
-
-.card-id {
-	text-overflow: ellipsis;
-	width: 100px;
-	overflow: hidden;
-	display: inline-block;
+.table-auto .active {
+    @apply bg-green-500;
+}
+.table-auto .active.indigo {
+    @apply bg-indigo-500;
+}
+.table-auto .active.red {
+    @apply bg-red-500;
+}
+.table-auto .active.blue {
+    @apply bg-blue-500;
+}
+.table-auto td {
+    @apply border cursor-default;
+}
+.table-auto td > div {
+    @apply p-10 text-center rounded-full;
 }

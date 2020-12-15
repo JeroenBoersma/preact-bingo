@@ -15,7 +15,7 @@ const Scores = ({players, removePlayer, openRegistration, organiserCard}) => (
                 </td>
                 <td>{player.score}</td>
                 <td>
-                    <a href={`/card/${player.cardId}`} class="card-id">{player.cardId}</a>
+                    <a href={`/card/${player.cardId}`}>{player.cardId}</a>
                 </td>
                 <td onCLick={() => removePlayer(player)} style={{cursor: "pointer"}} title="Remove player">X</td>
             </tr>)}

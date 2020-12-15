@@ -1,7 +1,9 @@
 import { Fragment } from 'preact';
 
 export const Stats = ({ stats }) => (<Fragment>
-    <div class="bar bar-sm">
-        <div class="bar-item" role="progressbar" style={`width: ${stats.done}%;`} aria-valuenow={stats.done} aria-valuemin="0" aria-valuemax="100" />
+    <div className="w-full">
+        <div className="shadow w-full bg-gray-100">
+            <div class="bg-gray-500 text-xs leading-none py-1 text-center text-white" style={`width: ${stats.done}%;`}>{stats.done}%</div>
+        </div>
     </div>
 </Fragment>);

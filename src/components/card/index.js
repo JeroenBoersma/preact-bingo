@@ -5,8 +5,8 @@ import Field from './field';
 const Card = (props) => {
 
     return (
-        <div>
-            <table class={"bingo-card"}>
+        <div className="transform -rotate-1 m-3">
+            <table className="table-auto p-1 bg-yellow-100">
                 <thead>
                     <tr>
                         <th>B</th>

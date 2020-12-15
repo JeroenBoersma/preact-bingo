@@ -2,6 +2,7 @@ import {useState, useEffect} from 'preact/hooks';
 
 const Field = ({number}) => {
 
+    const colors = [""];
     const [checked, setChecked] = useState(number.isCalled);
     const changeChecked = () => number.called(!number.isCalled);
 
@@ -13,7 +14,7 @@ const Field = ({number}) => {
     }, [number, number.called]);
 
     return (
-        <div onClick={changeChecked} className={`bingo-card-field ${checked ? 'bg-success' : ''}`}>
+        <div onClick={changeChecked} className={`${colors[Math.floor(Math.random() * colors.length)]} ${checked ? 'active' : ''}`}>
             {number.visual}
         </div>
     );

@@ -16,7 +16,7 @@ const UpNext = ({card}) => {
     }
 
     return (
-        <div class="game-stats">
+        <div>
             <Stats stats={game.stats()} />
             <h1>Called <strong>{number}</strong></h1>
             <button onClick={updateNumber}>Next</button>

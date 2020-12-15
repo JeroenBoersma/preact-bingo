@@ -6,10 +6,10 @@ const Home = () => (
 		<div>
 			Play Bingo online
 		</div>
-		<ul class={"menu"}>
+		<ul class="list-none m-5">
 			<li><a href="/card">Open random card</a></li>
 
-			<li class="divider" data-content="Organiser" />
+			<li data-content="Organiser" />
 			<li><a href="/organiser">Board with your own balls</a></li>
 			<li><a href="/organiser/balls">Board with digital balls</a></li>
 		</ul>
