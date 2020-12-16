@@ -47,7 +47,7 @@ class Game {
         if (undefined === this.subscribers[eventName]) {
             return;
         }
-        this.subscribers[eventName].reduce((value, fn) => fn(...value), value);
+        this.subscribers[eventName].reduce((value, fn) => fn(...value) || value, value);
     }
 
     subscribe(eventName, callback) {
