@@ -27,7 +27,6 @@
     "jest-preset-preact": "^1.0.0",
     "postcss": "^8.3.5",
     "preact-cli": "^3.2.2",
-    "preact-cli-tailwind": "^3.0.0",
     "preact-render-spy": "^1.2.1",
     "sirv-cli": "^0.4.5",
     "tailwindcss": "^2.2.4"
